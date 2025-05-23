@@ -17,6 +17,8 @@ inteiro = {digito}+
 "-"       { return new Symbol(sym.MENOS); }
 "*"       { return new Symbol(sym.MULTIPLICA); } 
 "/"       { return new Symbol(sym.DIVISAO); }
+"%"       { return new Symbol(sym.RESTO); }
+"^"       { return new Symbol(sym.POTENCIA); }
 ";"       { return new Symbol(sym.PTVIRG); }
 \n        { /* Ignora nova linha. */ }
 [ \t\r]+  { /* Ignora espaços. */ }

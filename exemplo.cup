@@ -1,13 +1,14 @@
 import java_cup.runtime.*;
 
 terminal Integer INTEIRO;
-terminal MAIS, MENOS, MULTIPLICA, DIVISAO, PTVIRG;
+terminal MAIS, MENOS, MULTIPLICA, DIVISAO, RESTO, POTENCIA, PTVIRG;
 
 non terminal inicio;
 non terminal Integer expr;
 
 precedence left MAIS, MENOS;
 precedence right MULTIPLICA, DIVISAO;
+precedence right POTENCIA, RESTO;
 
 start with inicio;
 
@@ -18,5 +19,7 @@ expr ::= expr:a MAIS expr:b  {: RESULT = a.intValue() + b.intValue(); :}
        | expr:a MENOS expr:b {: RESULT = a.intValue() - b.intValue(); :}
        | expr:a MULTIPLICA expr:b {: RESULT = a.intValue() * b.intValue(); :}
        | expr:a DIVISAO expr:b {: RESULT = a.intValue() / b.intValue(); :}
+       | expr:a RESTO expr:b {: RESULT = a.intValue() % b.intValue(); :}
+       | expr:a POTENCIA expr:b {: RESULT = Main.intPow(a.intValue(), b.intValue()); :}
        | INTEIRO:a           {: RESULT = a.intValue(); :}
        ;
